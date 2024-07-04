@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onClick="alert('товар добавлен в корзину');">Купить</button>
+    <a onclick="confirm('Закрыть каталог')" href="#">Закрыть диалог</a>
+    <script>
+        let userAnswer = prompt('Зимой и летом одним цветом');
+        console.log(userAnswer);
+        if(userAnswer.toLowerCase === '') {
+            console.log('пусто');
+        }
+        else if (userAnswer === 'елка') {
+                alert('Молодец');            
+            }
+        else {
+            alert('Неверно');
+        }
+        // тернарный оператор
+        (userAnswer.toLowerCase === 'елка') ? alert('Молодец') : alert('Неверно');
+
+        let pass = prompt('Введите пароль');
+        pass = Number(pass); //чтобы преобразовать в число
+        //pass = String(pass); //чтобы преобразовать в строку
+        if (pass === 123) {
+            alert('Проходим дальше');
+        } else {
+            alert('Нельзя дальше');
+        }
+        // короче запись и сразу преобразуем в число
+        let pass1 = Number(prompt('Введите пароль'));
+        alert((pass === 123) ? 'Проходим дальше' : 'Нельзя дальше');
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let age = Number(prompt('Введите ваш возраст: '));
+        // вместо Number можно писать +
+        // let age = +(prompt('Введите ваш возраст: '));
+        alert(`Возраст пользователя: ${age} лет`);
+        if (age < 0) {
+            alert('Ввели неверное значение');
+        }
+        else if (age === 1) {
+            alert(`Вам ${age} год`);
+        }
+        else if (age === 2 | age === 4) {
+            alert(`Вам ${age} года`);
+        }
+        let name = String(prompt('Введите ваше имя'));
+        alert(`Добро пожаловать на сайт, ${name}`);
+
+
+        // 2 задание
+        let age1 = prompt('Введите ваш возраст: ');
+        age1 = String(age1);
+        alert(age1);
+
+        let a = +prompt('Введите первое число: ');
+        let b = +prompt('Введите второе число: ');
+        let sum = a + b;
+        if (a === 0 || b === 0) {
+            alert('С нулем не работаю');
+        }
+        else if (!a || !b) {
+            alert('Нечего считать');
+        }
+        else {
+            
+            console.log(sum);
+            console.log(`Сумма чисел равна ${sum}`);
+            console.log(`Разность чисел равна ${a - b}`);
+            console.log(`Произведение чисел равно ${a * b}`);
+            console.log(`Частное от чисел равно ${a / b}`);
+            console.log(`Остаток от деления чисел равен ${a % b}`);
+        }
+
+        // 5 задание
+        let number1 = +prompt('Введите число');
+        if (number1 > 5) {
+            alert('Число больше 5');
+        }
+        else if (number1 < 5) {
+            alert('Число меньше 5');
+        }
+        else if (number1 === 5) {
+            alert('Число равно 5');
+        }
+
+        let test1 = prompt('Введите число');
+        let test2 = prompt('Введите число');
+        alert(test1 === test2) ? true : false;
+
+        let number2 = +prompt('Введите число');
+        let number3 = +prompt('Введите число');
+        if (number2 > number3) {
+            alert(`Число ${number3} минимальное`);
+        }
+        else if (number2 < number3) {
+            alert(`Число ${number2} минимальное`);
+        }
+
+        let number4 = +prompt('Введите число');
+        if (number4 > 0 && number4 < 15) {
+            alert(`Число ${number4} входит в диапазон от 0 до 15`);
+        }
+        else {
+            alert(`Число ${number4} не входит в диапазон от 0 до 15`);
+        }
+
+    </script>
+</body>
+</html>
