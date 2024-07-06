@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="script" href="script1.js">
+</head>
+<body>
+    <script>
+    // task1
+    const num1 = +prompt('Введите первое число');
+    const num2 = +prompt('Введите второе число');
+    (num1 <= 1) ? alert(`num1 = ${num1} <= 1`) : alert(`num1 = ${num1} > 1`);
+    (num2 >= 3) ? alert(`num2 = ${num2} >= 3`) : alert(`num2 = ${num2} < 3`);
+
+    // task2
+    let test = true;
+    // let test = false;
+    (test === true) ? alert('+++') : alert('---');
+
+    // task3
+    const day = +Math.ceil(Math.random() * 31);
+    if (day <= 10) {
+        alert(`${day} день - первая декада месяца`);
+    }
+    else if (day <= 20 && day >= 11) {
+        alert(`${day} день - вторая декада месяца`);
+    }
+    else if (20 < day <= 31) {
+        alert(`${day} день - третья декада месяца`);
+    }
+
+    // task4
+    const number = +prompt('Введите корректное положительное число');
+    thousandthRank = Math.floor((number / 1000) % 10);
+    hundredthRank = Math.floor((number / 100) % 10);
+    tenthRank = Math.floor((number / 10) % 10);
+    unitRank = number % 10;
+    alert(`В числе ${number} количество тысячных: ${thousandthRank}, сотен: ${hundredthRank}, десятков: ${tenthRank}, единиц: ${unitRank}`);
+    
+    </script>
+</body>
+</html>
