@@ -9,6 +9,7 @@
 <body>
     <script>
     // task1
+    // замечание от преподавателя: ввести проверку на корректный ввод чисел и строк
     const num1 = +prompt('Введите первое число');
     const num2 = +prompt('Введите второе число');
     (num1 <= 1) ? alert(`num1 = ${num1} <= 1`) : alert(`num1 = ${num1} > 1`);
@@ -18,6 +19,7 @@
     let test = true;
     // let test = false;
     (test === true) ? alert('+++') : alert('---');
+    test ? '+++':'---'; // вариант попроще от преподавателя
 
     // task3
     const day = +Math.ceil(Math.random() * 31);
