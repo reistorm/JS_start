@@ -2,10 +2,13 @@
 
 function numberToPower(number, power) {
     return number ** power;
+    // return Math.pow(number, power);
 }
 let number = +prompt('Введите число');
 let power = +prompt('Введите степень числа');
 console.log(numberToPower(number, power));
+// замечания от преподавателя можно использовать стрелочную функцию 
+// или Math.pow()
 
 // task 2
 
@@ -36,7 +39,7 @@ let num3 = +prompt('Введите третье число: ');
 alert(getMaxOfThreeNumbers(num1, num2, num3));
 
 // task4
-
+// замечание от преподавателя: лучше использовать стрелочные функции
 function sumNum(a, b) {
     return a + b;
 }
