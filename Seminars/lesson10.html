@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="script10.js"></script>
+    <script>
+        // Задание 1
+
+        const dayOfWeek = {
+            1: 'monday',
+            2: 'tuesday',
+            3: 'wednesday',
+            4: 'thursday',
+            5: 'friday',
+            6: 'saturday',
+            7: 'sunday'
+        }
+        console.log(dayOfWeek[2]);
+
+
+        const user = {
+            name: 'Ela',
+            surname: 'Rys',
+            age: '18',
+        }
+        // console.log(`${user.name}-${user.surname}-${user.age}`);
+        // user.lastname = prompt("Введите отчество");
+        // console.log(user);
+        // delete(user.surname);
+        // console.log(user);
+
+        // const product = {
+        //     name: 'Кровать',
+        //     price: 1000,
+        //     sale: 0.2,
+        //     salePrice() {
+        //         return this.price * (1 - this.sale)
+        //     }
+        // }
+        // console.log(`${product.salePrice()} - цена со скидкой`);
+
+        // Задание 2
+
+        const arr1 = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+        const arr2 = [1, 2, 3, 4, 5, 6, 7];
+        const obj = {};
+        if (arr1.length  === arr2.length) {
+            for (let i = 0; i < arr1.length; i++) {
+                obj[arr1[i]] = arr2[i];
+            }
+            console.log(obj);
+        } else {
+            console.log("В массивах не равное число элементов");
+        }
+        
+
+
+        const obj1 = {
+            x: 1,
+            y: 2,
+            z: 3
+        }
+        function bonus(obj, percent) {
+            for (let key in obj1) {
+                obj1[key] = obj1[key] + obj1[key] * percent;
+            }
+        }
+        bonus(obj, 0.2)
+        console.log(obj1);
+
+         // Задание 3
+
+        const obj2 = {
+            key1: {
+                key1: 1,
+                key2: 2,
+                key3: 3,
+            },
+            key2: {
+                key1: 4,
+                key2: 5,
+                key3: 6,
+            },
+            key3: {
+                key1: 7,
+                key2: 8,
+                key3: 9,
+            },
+        }
+        // 1 var
+        let result = 0;
+        for (const key in obj2) {
+            result += Object.values(obj2[key]).reduce((a,b) => a + b);
+        }
+        // Object.values(obj2) - получили массив с объектами
+        // reduce работает с каждым значением
+        console.log(result);
+        // 2 var 
+        console.log(Object.values(obj2)
+            .map(element => Object.values(element))
+            .map(element => element.reduce((a,b) => a + b))
+            .reduce((a, b) => a + b));
+            // Object.values(obj2) - получили массив с объектами
+            // map суммирует каждый массив
+            // reduce складывает суммы массивов
+
+
+         // Задание 4
+        const riddles = {
+            question: 'Зимой и летом одним цветом',
+            answer: 'заяц',
+            askQuestion: function() {
+                let userAnswer = prompt(this.question);
+                if (userAnswer.toLowerCase() === this.answer) {
+                    console.log("Правильный ответ");
+                } else {
+                    console.log('Попробуй еще раз');
+                }
+            }
+        }
+        console.log(riddles.askQuestion());
+    </script>
+</body>
+</html>
