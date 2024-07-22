@@ -27,21 +27,21 @@
             surname: 'Rys',
             age: '18',
         }
-        // console.log(`${user.name}-${user.surname}-${user.age}`);
-        // user.lastname = prompt("Введите отчество");
-        // console.log(user);
-        // delete(user.surname);
-        // console.log(user);
+        console.log(`${user.name}-${user.surname}-${user.age}`);
+        user.lastname = prompt("Введите отчество");
+        console.log(user);
+        delete(user.surname);
+        console.log(user);
 
-        // const product = {
-        //     name: 'Кровать',
-        //     price: 1000,
-        //     sale: 0.2,
-        //     salePrice() {
-        //         return this.price * (1 - this.sale)
-        //     }
-        // }
-        // console.log(`${product.salePrice()} - цена со скидкой`);
+        const product = {
+            name: 'Кровать',
+            price: 1000,
+            sale: 0.2,
+            salePrice() {
+                return this.price * (1 - this.sale)
+            }
+        }
+        console.log(`${product.salePrice()} - цена со скидкой`);
 
         // Задание 2
 
