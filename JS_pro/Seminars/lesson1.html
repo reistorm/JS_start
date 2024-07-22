@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <button class="btn">Buy</button>
+    <div class="content">
+
+    </div>
+    <img class="img" src="photo.jpg" alt="photo">
+    <script>
+        const buttonEl = document.querySelector('.btn');
+        const contentEl = document.querySelector('.content');
+        const imgEl = document.querySelector('.img');
+        // замена картинки
+        // imgEl.src = 'newphoto.img';
+         // замена картинки при клике
+        imgEl.onclick = function() {
+            imgEl.src = 'newphoto.img';
+        }
+        console.log(buttonEl);
+
+        const textEl = document.createElement('p');
+        textEl.textContent = 'Много текста';
+
+        buttonEl.onclick = function() {
+            //console.log('Клик JS');
+            buttonEl.textContent = 'Товар в корзине';
+            contentEl.appendChild(textEl);
+        }
+        
+
+        
+    </script>
+    <h1 class="title">Lorem ipsum dolor sit amet.</h1>
+    <p class="text">Lorem ipsum dolor sit amet. 1</p>    
+    <p class="text">Lorem ipsum dolor sit amet. 2</p>    
+    <p class="text">Lorem ipsum dolor sit amet. 3</p>    
+    <p class="text">Lorem ipsum dolor sit amet. 4</p>    
+    <h2 id="heading">Lorem, ipsum dolor.</h2>
+    <h2 id="heading2">Lorem, ipsum dolor.</h2>
+
+    <ul class="ui">
+        <li class="list">text1</li>
+        <li class="list">text2</li>
+        <li class="list">text3</li>
+    </ul>    
+    <script src="script1.js"></script>
+    <script>
+        // find selector
+        const heading = document.querySelector('.title');
+        console.log(heading);
+        // найдет по селектору .title + p
+        //const text = document.querySelector('.title + p');
+        //console.log(text);
+        // сразу все параграфы, а не первое включение
+        const text = document.querySelectorAll('.text');
+        console.log(text);
+
+        // вывести массив параграфов через for (лучше использовать если есть индексы)
+        for (let i = 0; i < text.length; i++) {
+            console.log(text[i]);
+        }
+        // forEach лучше использовать когда просто элементы
+        text.forEach(element => {
+            console.log(element);
+        });
+
+
+
+        // старые методы для захвата ссылок getElementById
+        const heading2 = document.getElementById('heading');
+        console.log(heading2);
+        // по новому querySelector
+        const heading4 = document.querySelector('#heading');
+        console.log(heading4);
+        // старые методы для захвата ссылок getElementsByClassName
+        const listEls = document.getElementsByClassName('list');
+        console.log(listEls);
+        // по новому querySelector - отличия в HTML/Node списках вывода
+        const listElsQS = document.querySelectorAll('.list');
+        console.log(listElsQS);
+
+        // snippets использовать
+        const list = document.querySelector('.list');
+
+        // создание нового элемента
+        const paragraphElement = document.createElement('p');
+        paragraphElement.textContent = 'Новый текст параграфа';
+
+        const titleEl = document.querySelector('.title');
+        titleEl.textContent = 'Заголовок из JS';
+
+        // добавление нового элемента
+        // sectionElement.appendChild(paragraphElement);
+        const paragraphElementText = document.createTextNode('Содержимое новой ноды');
+        paragraphElement.appendChild(paragraphElementText);
+        // клонирование узлов Node.cloneNode(deep) - полностью клонирует
+        // использовать на контенте без идентификаторов id
+        
+        // удаление узлов parentNode.removeChild(remove) или метод Element.remove()
+        const heading3 = document.querySelector('#heading2');
+        heading3.remove();
+
+        // замена узла
+        const divElement = document.createElement('div');
+        const paragraphElement3 = document.createElement('p');
+
+        const spanElement = document.createElement('span');
+        const strongElement = document.createElement('strong');
+        paragraphElement3.replaceWith(spanElement, strongElement);
+        console.log(divElement.outerHTML);
+
+
+
+    </script>
+</body>
+</html>

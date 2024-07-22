@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div id="block">
+        <p>1</p>
+        <p>2</p>
+    </div>
+    <div class="content">
+        
+    </div>
+    <a class="link" href="#">link text html</a>
+    <img class="photo" src="#" alt="">
+    <p class="www">text 1</p>
+    <p class="www">text 2</p>
+    <script>
+        // task1
+        const paragraphBlock = document.getElementById('block');
+        console.log(paragraphBlock);
+        const paragraphElement = document.getElementsByClassName('www');
+        console.log(paragraphElement);
+        const paragraphFind = document.querySelector('p');
+        console.log(paragraphFind);
+        // обращение по индексу
+        const paragraphFind2 = document.querySelector('p')[1];
+        console.log(paragraphFind2);
+        const paragraphFind1 = document.querySelectorAll('.www');
+        console.log(paragraphFind1);
+        
+        // const paragraphFind = document.querySelector('#block p');
+        //console.log(paragraphFind);
+
+
+        // task2
+        const linkText = document.querySelector('.link');
+        console.log(linkText);
+        linkText.textContent = "link text js";
+        linkText.href = "https://developer.mozilla.org/ru/";
+        
+
+        // task3
+        const imgPhoto = document.querySelector('.photo');
+        imgPhoto.src = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQg8JQdwG3Cz3H2DpKoiI0eGmTjLJu6E0P9jeVTkoWO-pyiJffr";
+
+        // task4
+        const div1 = document.querySelector('.content');
+        const paragraphDiv = document.createElement('p');
+        paragraphDiv.textContent = 'Новый текстовый элемент';
+        div1.appendChild(paragraphDiv);
+        paragraphDiv.remove();
+        // div1.removeChild(paragraphDiv);
+
+        // task5
+        const div2 = document.querySelector('.content');
+        const buttonEl = document.createElement('button');
+        div2.appendChild(buttonEl);
+        buttonEl.textContent = "Отправить";
+        let countButton = 0;
+        // buttonEl.onclick = function() {
+        //     buttonEl.textContent = 'Товар в корзине';
+        //     countButton++;
+        //     console.log(countButton);
+        // }
+        buttonEl.addEventListener('click', () => { 
+            countButton++
+            console.log(countButton);})
+
+        // task6
+
+
+    </script>
+    
+
+
+
+
+    <script src="script2.js" defer></script>
+</body>
+</html>
