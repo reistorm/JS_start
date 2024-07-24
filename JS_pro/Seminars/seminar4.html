@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- <div class="block">
+
+    </div>
+    <script>
+        // task 1
+        const divBlock = document.querySelector('.block');
+        const divItem = document.createElement('div');
+        divItem.textContent = "Элемент внутри";
+        divBlock.appendChild(divItem);
+        divItem.style.color = 'blue';
+        divItem.style.border = '1px solid black';
+        divItem.style.backgroundColor = '#f8f8f8';
+        divItem.style.padding = '16px';
+        divItem.setAttribute('class', 'item_1');
+    </script> -->
+
+    
+
+    <!-- <div class="elem">
+        <img src="photo.png" alt="photo">
+        <div class="content">
+            <h2 class="heading">Lorem, ipsum dolor.</h2>
+            <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, quaerat.</p>
+        </div>
+    </div>
+    <script>
+    // task 2
+    const paragraph = document.querySelector('.text');
+    console.log(paragraph);
+    // parentNode или parentElement
+    console.log(paragraph.parentNode);
+    // сосед
+    console.log(paragraph.previousElementSibling);
+    // img
+    console.log(paragraph.parentElement.parentElement.firstElementChild);
+    console.log(paragraph.parentElement.previousElementSibling);
+    // elem
+    console.log(paragraph.parentElement.parentElement);
+
+    </script> -->
+    <!-- <script>
+    alert( document.documentElement.parentNode ); // выведет document
+    alert( document.documentElement.parentElement ); // выведет null
+    </script> -->
+    <!-- <div class="item">
+        <div class="elem">
+            <div class="info">
+                <h2 class="subtitle">Lorem, ipsum dolor.</h2>
+            </div>
+        </div>
+    </div>
+    <script>
+    // task3
+    const h2Text = document.querySelector('h2');
+    console.log(h2Text);
+    console.log(h2Text.parentNode);
+    console.log(h2Text.parentNode.parentNode);
+    console.log(h2Text.parentNode.parentNode.parentNode);
+    </script> -->
+    
+    <form action="#">
+        <input type="text">
+        <button class="btn">Отправить</button>
+    </form>
+
+    <script>
+    // task4
+        const button = document.querySelector('.btn');
+        const input = document.querySelector('input');
+        const form = document.querySelector('form');
+        let h2;
+        button.addEventListener('click', (event) => {
+            // форма не отправляется (PreventDefault отменяет стандартное поведение некоторых функций)
+            // trim() метод проверяет на пустые пробелы
+            event.preventDefault();
+            if (input.value.trim() === '') {
+                // если h2 не существует, то создаем, отправляем
+                if (!h2) {
+                    h2 = document.createElement('h2');
+                    h2.textContent = "Поле не заполнено";
+                    input.after(h2);
+                }
+                input.style.border = ' 2px solid red';
+                // after - после всех действий
+                
+            } else {
+                // если h2 существует, то отправляем
+                if (h2) {
+                    h2.remove();
+                    h2 = null;
+                }
+                input.style.border = ' 2px solid black';
+                // submit() - метод отправки
+                form.submit();
+                console.log('Форма отправлена');
+                // form.reset() - сбрасывает форму
+                form.reset();
+            }
+        })
+
+
+
+    </script>
+
+    <script src="script4.js"></script>
+</body>
+</html>
