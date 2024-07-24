@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .heading {
+            color: white;
+            text-transform: uppercase;
+            background-color: #ccc;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="content">
+    </div>
+
+    <ul class="menu">
+        <li class="menu__list"><a href="#" class="menu__link">link 1</a></li>
+        <li class="menu__list"><a href="#" class="menu__link">link 2</a></li>
+        <li class="menu__list"><a href="#" class="menu__link">link 3</a></li>
+        <li class="menu__list"><a href="#" class="menu__link">link 4</a></li>
+    </ul>
+
+    <script>
+        const liEl = document.querySelectorAll('.menu__list');
+        const liElOne = document.querySelector('.menu__list');
+        console.log(liEl);
+        console.log(liElOne.parentNode.children);
+        const linkEl = document.querySelector('.menu__link');
+        const menu = document.querySelector('.menu');
+        console.log(menu.children);
+        // or forEach c children не работает
+        menu.childNodes.forEach(element => {
+            console.log(element);
+        });
+       
+       
+        console.log(linkEl.children);
+        console.log(linkEl.childNodes);
+
+
+
+
+        const content = document.querySelector('.content');
+        const h1El = document.createElement('h1');
+        h1El.textContent = 'h1 element';
+        content.appendChild(h1El);
+        // можно так как ниже, но напишем style наверху в head, т.к. inline-стили главнее
+        // h1El.style.background = 'blue';
+        // h1El.style.color = 'middleblue';
+        // h1El.style.textAlign = 'center';
+        h1El.setAttribute('class','heading');
+        const imgEl = document.createElement('img');
+        content.appendChild(imgEl);
+
+        //imgEl.src = 'https://img1.akspic.ru/attachments/crops/2/4/2/6/4/146242/146242-gora-gornyj_hrebet-banff-prirodnyj_landshaft-otrazhenie-2560x1440.jpg';
+        imgEl.setAttribute('alt', 'круто фото');
+
+        // используется в элементах меню
+        console.log(liEl);
+        console.log(liEl.parentElement.lastElementChild);
+        console.log(liEl.parentElement.lastChild);
+        console.log(liEl.parentElement.firstElementChild);
+        // можно сразу два
+        console.log(liEl.nextElementSibling.nextElementSibling);
+        // предыдущий 
+        console.log(liEl.previouslyElementChild);
+        console.log(liEl.parentElement.lastElementChild.previouslyElementSibling);
+        
+
+
+
+    </script>
+
+
+
+
+
+
+    <script src="script3.js"></script>
+</body>
+</html>
