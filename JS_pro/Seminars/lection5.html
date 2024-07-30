@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="console.log('hello click html')" class="button">Купить</button>
+    <!-- <div onclick="console.log('hello click html')" class="div-button">Купить 2</div> -->
+    <button class="button">Купить 2</button>
+    <button class="button">Купить 3</button>
+    <button class="button">Купить 4</button>
+    <ul class="menu">
+        <li>list-1</li>
+        <li>list-2</li>
+        <li>list-3</li>
+    </ul>
+    <a href="https://yandex.ru" class="link">Yandex</a>
+    <input type="text">
+    <form action="#">
+        <input type="text" class="input">
+        <div class="error"></div>
+    </form>
+    <script>
+        const buttonEl = document.querySelector('.button');
+        let count = 0;
+        buttonEl.onclick = function () {
+            console.log('click JS button');
+            count++;
+            console.log(`${count} - кликов по кнопке`);
+        }
+        // addEventListener - более современный способ
+        buttonEl.addEventListener('click', function (e) {
+            console.log('click add');
+        });
+
+
+        // or вместо event использовать функцию
+        const click = function() {
+            console.log('click js button');
+            count++;
+            console.log(`${count} - кликов по кнопке столько`);
+        }
+        buttonEl.addEventListener('click', click);
+
+        // event.target
+        const buttonEle = document.querySelector('.button');
+        buttonEle.addEventListener('click', function(event){
+            console.log(event);
+        });
+
+        const buttonEls = document.querySelectorAll('.button');
+        buttonEls.forEach(element => {
+            element.addEventListener('click', function(event) {
+                const target = event.target;
+                console.log(target);
+            });
+        });
+
+        // для списка ul li
+        const menuEl = document.querySelector('.menu');
+
+        
+        const nameFunction = (e) => {
+            console.log(e.target, e.currentTarget);
+        }
+        menuEl.addEventListener('click', nameFunction);
+        
+
+
+        // load -прогрузилась полностью страница, DOMContentLoaded -загрузилась какая-то часть
+        document.addEventListener('DOMContentLoaded', function (e) {
+            console.log('loaded');
+        });
+        window.addEventListener('load', function (e) {
+            console.log('все загрузилось');
+        });
+
+        // mouseover, mouseleave - следить за движением мыши
+        const button = document.querySelector('.button');
+        button.addEventListener('mouseover', function (e) {
+            console.log('Не нужно наводить, ты лучше нажми');
+        });
+        button.addEventListener('mouseleave', function (e) {
+            console.log('Не нужно убегать');
+        });
+
+
+        // key - следит за введением клавиш без ввода
+
+        window.addEventListener('keydown', function (e){
+            console.log(e); // ловит буквы-клавиши отдельно
+            console.log(e.key); // слова ловит
+        });
+        // keyup, keypress
+
+
+        // prevent default - остановить переход на др страницу
+        // типа ты точно хочешь удалить ? и все дела
+        const link = document.querySelector('.link');
+        link.addEventListener('click', function (e){
+            e.preventDefault();
+            console.log('hello link');
+        });
+
+        // copy - копирование текста прямо в консоль
+        document.addEventListener('copy', function (e) {
+            const copyText = document.getSelection().toString();
+            console.log(copyText);
+        });
+
+
+        //resize window - изменить размер окна
+        window.addEventListener('resize', (e) => {
+            console.log('resize');
+        });
+
+        // input
+        const inputEl = document.querySelector('.input');
+        inputEl.addEventListener('input', (event) => {
+            console.log(event.target.value);
+        })
+        inputEl.addEventListener('input', (event) => {
+            if(Number(event.target.value) === 123) {
+                console.log('Верно');
+            } else {
+                console.log('Пока не угадал');
+            }
+        })
+
+        // submit - подтверждение, что поле не дб пустым
+        const inputText = document.querySelector('.input');
+        const formRun = document.querySelector('form');
+        const errorEl = document.querySelector('.error');
+        formRun.addEventListener('submit', (event) => {
+            if (inputText.value === '') {
+                event.preventDefault(); // останавливаем отправку данных
+                errorEl.textContent = 'Поле не дб пустым';
+            }
+        })
+
+    </script>
+    
+    
+    
+    <script src="script5.js"></script>
+</body>
+</html>
