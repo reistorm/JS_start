@@ -20,43 +20,43 @@
     <script>
         // task1
 
-        // console.log('Страница загрузилась');
-        // const body = document.querySelector('body');
-        // body.insertAdjacentHTML("afterbegin", '<button>Кнопка</button>');
-        // const btn = document.querySelector('button');
-        // window.onload = () => console.log('Страница вся загрузилась');
-        // btn.addEventListener('click', ()=> console.log('событие addEventListener'));
-        // btn.onclick = () => console.log('событие onclick');
+        console.log('Страница загрузилась');
+        const body = document.querySelector('body');
+        body.insertAdjacentHTML("afterbegin", '<button>Кнопка</button>');
+        const btn = document.querySelector('button');
+        window.onload = () => console.log('Страница вся загрузилась');
+        btn.addEventListener('click', ()=> console.log('событие addEventListener'));
+        btn.onclick = () => console.log('событие onclick');
 
         // task2
-        // const body1 = document.querySelector('body');
-        // //body1.insertAdjacentHTML("afterbegin", '<button>Кнопка 1</button>');
-        // for (let i = 0; i < 3; i++) {
-        //     body1.insertAdjacentHTML("afterbegin", `<button>Кнопка ${i+1}</button>`);
+        const body1 = document.querySelector('body');
+        //body1.insertAdjacentHTML("afterbegin", '<button>Кнопка 1</button>');
+        for (let i = 0; i < 3; i++) {
+            body1.insertAdjacentHTML("afterbegin", `<button>Кнопка ${i+1}</button>`);
             
-        // }
-        // body1.addEventListener('click', (e) => {
-        //     // проверка: если элемент, на который нажали - кнопка, то сообщение
-        //     if(e.target.nodeName === 'BUTTON') {
-        //         console.log(`Вы нажали на кнопку ${e.target.textContent}`);
-        //     }
-        // })
+        }
+        body1.addEventListener('click', (e) => {
+            // проверка: если элемент, на который нажали - кнопка, то сообщение
+            if(e.target.nodeName === 'BUTTON') {
+                console.log(`Вы нажали на кнопку ${e.target.textContent}`);
+            }
+        })
 
-        // // счетчик сколько раз нажали на кнопку btn4
-        // body1.insertAdjacentHTML("afterbegin", `<button class='btn4'>Кнопка 4</button>`)
-        // const btn4 = document.querySelector('.btn4');
-        // let count = 0;
-        // btn4.addEventListener('click', ()=>  {
-        //     count++;
-        //     console.log(`на кнопку нажали ${count} раз`);
-        // })
+        // счетчик сколько раз нажали на кнопку btn4
+        body1.insertAdjacentHTML("afterbegin", `<button class='btn4'>Кнопка 4</button>`)
+        const btn4 = document.querySelector('.btn4');
+        let count = 0;
+        btn4.addEventListener('click', ()=>  {
+            count++;
+            console.log(`на кнопку нажали ${count} раз`);
+        })
 
-        // // меняется содержимое кнопки 5
-        // body1.insertAdjacentHTML("afterbegin", `<button class='btn5'>Кнопка 5</button>`)
-        // const btn5 = document.querySelector('.btn5');
-        // btn5.addEventListener('click', ()=>  {
-        //     btn5.textContent = 'Вы нажали на эту кнопку';
-        // })
+        // меняется содержимое кнопки 9
+        body1.insertAdjacentHTML("afterbegin", `<button class='btn9'>Кнопка 9</button>`)
+        const btn9 = document.querySelector('.btn9');
+        btn9.addEventListener('click', ()=>  {
+            btn5.textContent = 'Вы нажали на эту кнопку';
+        })
 
 
         // task3
