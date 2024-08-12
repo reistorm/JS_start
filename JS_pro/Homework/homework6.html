@@ -53,15 +53,17 @@
         // - у элемента, а также выводить в нижнем регистре верный тег в данной строке, по
         // - которому был совершен клик.
         // - Необходимо использовать делегирование.
-        // 4. Сделайте, чтобы при наведении на textarea в консоли появлялось сообщение: 
-        // "Вы навели на textarea."
         document.addEventListener('click', (e) => {
             if(e.target.classList.contains('super_element')) {
                 console.log(`Класс "super_element" присутствует в элементе "${e.target.tagName.toLowerCase()}".`);
             } else {
                 console.log(`Класс "super_element" не присутствует в элементе "${e.target.tagName.toLowerCase()}".`);
-            }
-        });
+                }
+            });
+
+        // 4. Сделайте, чтобы при наведении на textarea в консоли появлялось сообщение: 
+        // "Вы навели на textarea."
+        
 
         
         const textarea1 = document.querySelector('textarea');
