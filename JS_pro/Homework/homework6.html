@@ -39,7 +39,8 @@
     <script>
         // 1. Необходимо вывести сообщение в консоль "все теги прогрузились", 
         // когда все теги будут созданы браузером.
-        window.onload = () => console.log('Страница вся загрузилась');
+        document.addEventListener('DOMContentLoaded', () =>
+            console.log('все теги прогрузились'));
         // 2. Необходимо вывести сообщение в консоль "страница загрузилась", 
         // когда все ресурсы страницы будут загружены.
         window.addEventListener('load', ()=> {
@@ -48,20 +49,21 @@
 
         // 3. При клике на какой-либо тег на странице в консоль должно выводиться сообщение наподобие:
         // - Класс "super_element" присутствует в элементе "div".
-        const button = document.querySelector('button');
-        button.addEventListener("click", ()=> {
-            if (button.classList.contains('super_element')) {
-                console.log('Класс "super_element" присутствует в элементе "div"');
-            }
-        });
-
         // - сообщение должно определять присутствует или отсутствует класс "super_element"
         // - у элемента, а также выводить в нижнем регистре верный тег в данной строке, по
         // - которому был совершен клик.
         // - Необходимо использовать делегирование.
-
         // 4. Сделайте, чтобы при наведении на textarea в консоли появлялось сообщение: 
         // "Вы навели на textarea."
+        document.addEventListener('click', (e) => {
+            if(e.target.classList.contains('super_element')) {
+                console.log(`Класс "super_element" присутствует в элементе "${e.target.tagName.toLowerCase()}".`);
+            } else {
+                console.log(`Класс "super_element" не присутствует в элементе "${e.target.tagName.toLowerCase()}".`);
+            }
+        });
+
+        
         const textarea1 = document.querySelector('textarea');
         textarea1.addEventListener('mouseover', ()=> {
             console.log('Вы навели на textarea.');
@@ -84,6 +86,7 @@
         // ul? Ответ необходимо написать здесь же, под этим комментарием, своими словами.
 
         // 7. С помощью JS необходимо изменить цвет заднего фона каждого второго тега li.
+        document.querySelectorAll('li:nth-child(2n)').forEach(el => el.style.backgroundColor = 'blue');
 
 
 
