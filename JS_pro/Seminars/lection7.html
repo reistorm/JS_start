@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- прерывание распространения события -->
+    <!-- <form> 
+        <label><input type="radio" name="propagation-control" value="stopPropagation">Stop propagation</label> 
+        <label><input type="radio" name="propagation-control" value="stopImmediatePropagation">Stop Immediate propagation</label> 
+    </form> 
+    <ul> 
+        <li>Первый</li> 
+        <li>Второй</li> 
+        <li>Третий</li> 
+    </ul>  -->
+    <!-- <script>
+        const form =document.forms[0];
+        const list =document.querySelector('ul');
+        list.addEventListener('click', (e) => { 
+            console.log('В первом UL в фазе захвата'); 
+            const propagationControlMethodName = form.elements['propagation-control'].value 
+            if(propagationControlMethodName) { 
+                e[propagationControlMethodName]() 
+            } 
+        },true);
+        list.addEventListener('click', () => { 
+            console.log('Во втором UL в фазе захвата')
+        }, true) 
+        list.addEventListener('click', () => { 
+            console.log('В первом UL в фазе всплытия') 
+        }); 
+        Array.from(list.children).forEach((child) => { 
+            child.addEventListener('click', () => { console.log('В каждом LI в фазе всплытия') }) 
+        });
+    </script> -->
+    <!-- действия по умолчанию и отменяемые события -->
+    <!-- <form action="#">
+        <h2>Форма</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas esse minus commodi.</p>
+        <input id="checkbox" type="checkbox" class="check">
+        <label for="checkbox">
+            Согласен с условиями
+        </label>
+        <div class="error"></div> -->
+    <!-- type="submit" - кнопка с подтверждением -->
+        <!-- <button type="submit">Отправить</button>
+    </form>
+    <script>
+        const inputEl =document.querySelector('.check');
+        const formEl = document.querySelector('.form');
+        const errorEl = document.querySelector('.error');
+        inputEl.addEventListener('click', function (e) {
+            const target = e.target;
+            // состояние - нажат или нет
+            //console.log(target.value); 
+            // true - false 
+            console.log(target.checked); 
+        });
+        formEl.addEventListener('submit', function (e) {
+            // если нажат/выбран
+             
+            console.log(inputEl.checked ? 'Молодец' : 'Выбрать чекбокс');
+           // или 
+           if (inputEl.checked) {
+                console.log('COOL');
+            } else {
+                // console.log('Забыл поставить галочку');
+                errorEl.textContent = 'Выбрать "согласен с условиями"';
+                // останавливаем событие
+                e.preventDefault();
+            }
+        });
+    </script> -->
+    <!-- Генерация событий, пользовательские события -->
+    <button>Кликни меня!</button> 
+    <script> 
+    // события эвента - всплытие и cancelable для того, чтобы сгенерированное 
+    // событие всплывало и было отменяемым
+        const eventOptions = {bubbles: true, cancelable: true} 
+        const event = new Event('click', eventOptions) 
+        event.view = window 
+        const mouseEvent = new MouseEvent('click', { 
+            ...eventOptions, view: window, }) 
+            
+        // true or false
+        // область - вся страница
+        // получается если кликать везде - мы это отследим
+        // по умолчанию три false выставлены
+        // по isTrusted можно отличить сгенерированное событие от собственного
+        document.addEventListener('click', (event) => { 
+            console.log(event.isTrusted) 
+        }) 
+        const button = document.querySelector('button') 
+        button.dispatchEvent(event) 
+        button.dispatchEvent(mouseEvent) 
+        button.click() 
+        </script>
+
+
+
+
+
+
+
+
+
+
+    <script src="script7.js"></script>
+</body>
+</html>
