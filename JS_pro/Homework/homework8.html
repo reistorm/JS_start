@@ -61,12 +61,12 @@
     // - Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
     
     const form = document.querySelector('form');
-    const inputEl = form.querySelectorAll('input, select');
+    const formControlEls = form.querySelectorAll('input, select');
     form.addEventListener('submit', (e)=> {
-        e.preventDefault();
-        inputEl.forEach(inputEl => {
-            if(inputEl.value === '') {
-                inputEl.classList.add = 'error';
+        formControlEls.forEach(formControlEl => {
+            if(formControlEl.value === '') {
+                formControlEl.classList.add('error');
+                e.preventDefault();
             }
         });
     });
