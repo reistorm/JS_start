@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!-- task 1 -->
+    <form>
+        <input type="checkbox" class="checkbox" id="check">
+        <label for="check">Согласен с условиями</label>
+        <button type="submit">Отправить</button>
+    </form>
+    <script>
+        const inp = document.querySelector("#checkbox");
+        const btn = document.querySelector("button");
+        const form = document.querySelector("form");
+        let errMessage = false;
+
+        btn.addEventListener("click", (e)=> {
+            e.preventDefault();
+            if(!inp.checked && !errMessage) {
+                const p = document.createElement("p");
+                p.textContent = "Необходимо согласиться с условиями";
+                btn.insertAdjacentElement("afterend", p);
+                errMessage = true;
+            } else if (inp.checked) {
+                form.submit();
+            }
+        })
+        // другое решение
+        const checkbox = document.querySelector('#agree')
+        const btnAgree = document.querySelector('#sub-btn-agree')
+        let isErr = false
+        btnAgree.addEventListener('click', function (e) {
+            if (!checkbox.checked) {
+                const errMsg = document.createElement('p')
+                errMsg.textContent = 'Необходимо согласиться с условиями'
+                if (!isErr) {
+                    btnAgree.insertAdjacentElement('beforebegin', errMsg)
+                }
+                isErr = true
+                e.preventDefault();
+            }
+        });
+    </script>
+
+    <!-- task 2 -->
+    <form>
+        <input type="radio" name="drink" id="coffee">
+        <label for="coffee">Кофе</label>
+        <input type="radio" name="drink" id="tea">
+        <label for="tea">Чай</label>
+        <button type="submit" class="button">Отправить</button>
+    </form>    
+    <script>
+        const button = document.querySelector('button');
+        const drink = document.querySelectorAll("[name='drink']");
+        button.addEventListener('click', (e)=> {
+            e.preventDefault();
+            drink.forEach((button)=> {
+                if(button.checked) {
+                    if(button.id === 'coffee') {
+                        const p = document.createElement('p');
+                        p.textContent = "Кофе закончился";
+                        button.insertAdjacentElement("afterend", p);
+                    } else if(button.id === 'tea') {
+                        const p1 = document.createElement('p');
+                        p1.textContent = "Чай закончился";
+                        button.insertAdjacentElement("afterend", p1);
+                    }
+                }
+            })
+        })
+    </script>
+    
+    <!-- task 3 -->
+    <form>
+        <input type="password" id="pass" placeholder="Введите пароль">
+        <button type="submit">Отправить</button>
+        
+    </form>
+    <script>
+        const button = document.querySelector('button');
+        const pass = document.querySelector('#pass');
+        const form = document.querySelector('form');
+        button.addEventListener('click', (e)=> {
+            e.preventDefault();
+            if(pass.value.toLowerCase() === 'пароль') {
+                pass.style.border = '1px solid green';
+                form.submit();
+            } else {
+                pass.style.border = '1px solid red';
+                pass.value = '';
+                pass.placeholder = 'Пароль неверный';
+            }
+        })
+    </script>
+
+
+    <!-- task 4 -->
+    <input type="text">
+    <h1>Заголовок</h1>
+    <script>
+        const inputEl = document.querySelector('input');
+        const h1 = document.querySelector('h1');
+        inputEl.addEventListener('input', (e)=>{
+            h1.textContent = inputEl.value;
+        })
+    </script>
+
+    <script src="script8.js"></script>
+</body>
+</html>

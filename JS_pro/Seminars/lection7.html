@@ -7,7 +7,7 @@
 </head>
 <body>
     <!-- прерывание распространения события -->
-    <!-- <form> 
+    <form> 
         <label><input type="radio" name="propagation-control" value="stopPropagation">Stop propagation</label> 
         <label><input type="radio" name="propagation-control" value="stopImmediatePropagation">Stop Immediate propagation</label> 
     </form> 
@@ -15,8 +15,8 @@
         <li>Первый</li> 
         <li>Второй</li> 
         <li>Третий</li> 
-    </ul>  -->
-    <!-- <script>
+    </ul> 
+    <script>
         const form =document.forms[0];
         const list =document.querySelector('ul');
         list.addEventListener('click', (e) => { 
@@ -35,18 +35,18 @@
         Array.from(list.children).forEach((child) => { 
             child.addEventListener('click', () => { console.log('В каждом LI в фазе всплытия') }) 
         });
-    </script> -->
+    </script>
     <!-- действия по умолчанию и отменяемые события -->
-    <!-- <form action="#">
+    <form action="#">
         <h2>Форма</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas esse minus commodi.</p>
         <input id="checkbox" type="checkbox" class="check">
         <label for="checkbox">
             Согласен с условиями
         </label>
-        <div class="error"></div> -->
-    <!-- type="submit" - кнопка с подтверждением -->
-        <!-- <button type="submit">Отправить</button>
+        <div class="error"></div>
+        <!-- type="submit" - кнопка с подтверждением -->
+        <button type="submit">Отправить</button>
     </form>
     <script>
         const inputEl =document.querySelector('.check');
@@ -73,7 +73,7 @@
                 e.preventDefault();
             }
         });
-    </script> -->
+    </script>
     <!-- Генерация событий, пользовательские события -->
     <button>Кликни меня!</button> 
     <script> 

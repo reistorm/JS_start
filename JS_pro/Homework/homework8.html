@@ -61,26 +61,21 @@
     // - Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
     
     const form = document.querySelector('form');
-    const inputEl = document.querySelector('.form-control');
-    const button = document.querySelector('button');
-    let errorEl = false;
-    button.addEventListener('submit', (e)=> {
-        if(!form.submit && !errorEl) {
-            const p = "Форма не отправлена";
-            button.insertAdjacentElement("afterend", p);
-            errorEl = true;
-            form.style.border = '1px solid red';
-        } else if (button.submit) {
-            form.submit();
+    const inputEl = form.querySelectorAll('input, select');
+    form.addEventListener('submit', (e)=> {
+        e.preventDefault();
+        inputEl.forEach(inputEl => {
+            if(inputEl.value === '') {
+                inputEl.classList.add = 'error';
+            }
+        });
+    });
+    form.addEventListener('input', (e)=> {
+        if(!e.target.classList.contains('form-control')) {
+            return;
         }
-    })
-    
-    
-    
-    
-    
-    
-    
+        e.target.value === '' ? e.target.classList.add('error') : e.target.classList.remove('error');
+    });
     
     // <script src="script8.js"></script>
 </body>
