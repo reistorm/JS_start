@@ -4,11 +4,11 @@ body2.appendChild(div2);
 const parseData = JSON.parse(data);
 console.log(parseData);
 
-parseData.data.forEach(element => {
+parseData.characters.forEach(element => {
     div2.insertAdjacentHTML("beforeend", `
         <figure>
-        <img src="${element}" alt="dog" />
-        <figcaption>Dog</figcaption>
+        <img src="${element}" alt="characters" />
+        <figcaption>Characters</figcaption>
         </figure>`)
 });
 
