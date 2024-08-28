@@ -164,3 +164,8 @@
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure
 https://dog.ceo/dog-api/documentation/random
 https://jsonplaceholder.typicode.com/ - большой объем данных для тестирования
+
+
+Урок 13. Семинар. Работа с медиа
+Смена темы сайта
+Проверка существования аккаунта на github - добавление репозиториев в избранное

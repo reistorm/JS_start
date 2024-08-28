@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- controls - панель управления аудио
+    preload=auto - авто загрузка -->
+    <audio class="audio" controls src="http://beloweb.name/audio/dillon_-_thirteen_thirtyfive_.mp3" preload="auto"></audio>
+    <!-- предоставление доступа записи видео -->
+    <input type="file" accept="audio/*" capture id="recorder">
+    <audio id="player" controls></audio>
+    
+    
+    <script>
+        const audioEl = document.querySelector('audio');
+        audioEl.addEventListener('play', function (e) {
+            console.log('Вы нажали audioplay');
+        });
+
+        audioEl.addEventListener('pause', function() {
+            console.log('Вы нажали паузу');
+        })
+        
+        // played - содержит указатель на объект TimeRanges временных интервалов
+        // медиаресурса, которые браузер воспроизвел полностью. Если суммировать
+        // все интервалы played, то получим долю прослушанного аудил, что мб полезно
+        // для сбора метрик
+        const audio1 = document.querySelector('audio');
+        const {played} = audio1;
+
+        const handlePlayed = () => {
+            let totalPlayedSeconds = 0;
+            for (let i = 0; i < played.length; i++) {
+                totalPlayedSeconds += played.end[i] - played.start[i];
+                
+            }
+            console.log(totalPlayedSeconds);
+        }
+        audio1.addEventListener('pause', handlePlayed, false);
+        audio1.addEventListener('ended', handlePlayed, false);
+
+        // пользователь записал аудио и нам надо получить доступ к нему
+        // получаем доступ в обработчике события onchange, потом прочитать
+        // свойство files объекта события
+        const recorder  = document.getElementById('recorder');
+        const player = document.getElementById('player');
+
+        recorder.addEventListener('change', (event) => {
+            const [file] = event.target.files;
+            const url = URL.createObjectURL(file);
+            player.src = url;
+        });
+
+
+    </script>
+
+
+
+</body>
+</html>
