@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // сравнение двух чисел массива без операторов rest, spread
+        const arr1 = [5, 10];
+        function max(param1, param2) {
+            if (param1 > param2) {
+                return param1;
+            } else if (param1 < param2) {
+                return param2;
+            } else {
+                return 'Числа равны';
+            }
+        }
+        // ... - разбивает массив на атомарные частицы - но сравнивает только первые два числа
+        console.log(max(...arr1));
+        // готовое решение- но сравнивает только первые два числа
+        console.log(Math.max(...arr1));
+
+        через оператор rest
+        const arr = [1, 3, 5, 7, 10];
+        function max(param1, param2, ...rest) {
+            if (param1 > param2) {
+                console.log(param1);
+            } else if (param1 < param2) {
+                console.log(param2);
+            } console.log(rest);
+        }
+        console.log(max(...arr));
+    </script>
+    <script src="spread.js"></script>
+    <script>
+        // Замыкания
+        // появляется когда переменная объявлена в функции
+        // при вызове функции - считает правильно, при вызове переменной из функции - ошибка
+        let count = 0;
+        const upCount = () => {
+            let params = 3;
+            return count + params;
+        }
+        console.log(upCount());
+        console.log(params);
+    </script>
+    <script src="Scope.js"></script>
+    <script src="lexical.js"></script>
+
+    <script>
+        // Рекурсия 
+
+        // n! = (n-1)! * n
+        // 4! = 6 * 4; // 24
+        // 3! = 2 * 3; // 6
+        // 2! = 1 * 2; // 2
+        // 1! = 1;
+
+        function factorial(number) {
+            if (number === 1) {
+                return 1;
+            } return factorial(number - 1) * number;
+        }
+        console.log(factorial(10));
+    </script>
+    <div class="product">
+        <img src="" alt="" class="product__img">
+        <div class="product__content">
+            <h3 class="product__name"></h3>
+            <p class="product__text"></p>
+        </div>
+    </div>
+    <script>
+        // использование рекурсивной функции, чтобы сгенерировать много элементов
+        {
+            tag: 'div',
+            class: 'product'
+            {
+                tag: 'img',
+                class: 'product__img',
+                src: 'photo.png'
+            }
+        }
+        
+    </script>
+</body>
+</html>
