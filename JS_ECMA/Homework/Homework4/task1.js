@@ -12,8 +12,8 @@
 // с помощью response.json() и возвращает объект с данными о пользователе.
 // Если запрос не успешен, функция отклоняет промис с сообщением об ошибке.
 
-function getUserData(userId) {
-    return fetch(`https://api.github.com/users/${userId}`)
+function getUserData(id) {
+    return fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
         .then(response => {
             if(response.ok) {
                  return response.json();
@@ -22,4 +22,4 @@ function getUserData(userId) {
         })
 };
 
-getUserData(123456);
+getUserData(583231);

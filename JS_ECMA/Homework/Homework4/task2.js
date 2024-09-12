@@ -12,7 +12,7 @@
 // Если запрос неуспешен, функция отклоняет промис с сообщением
 
 function saveUserData(userData) {
-    const url = 'https://api.github.com/users/octocat';
+    const url = 'https://jsonplaceholder.typicode.com/users';
     const options = {
         method: 'POST',
         headers: {
