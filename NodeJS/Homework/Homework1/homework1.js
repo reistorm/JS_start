@@ -12,13 +12,12 @@ const http = require('http');
 
 const server = http.createServer((req, res) => {
     console.log('Запрос получен');
-    
+    let count = 0;
     if(req.url === '/') {
         res.writeHead(200, {
             'Content-Type': 'text/html; charset=UTF-8',
         });
         res.end('<a href="./about">About</a>');
-        
     } else if(req.url === '/about') {
         res.writeHead(200, {
             'Content-Type': 'text/html; charset=UTF-8',
