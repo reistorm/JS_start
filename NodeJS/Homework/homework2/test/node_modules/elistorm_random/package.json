@@ -1,0 +1,19 @@
+{
+  "name": "elistorm_random",
+  "version": "1.0.0",
+  "description": "Random number and string generation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reistorm/JS_start.git#main"
+  },
+  "author": "Elistorm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reistorm/JS_start/issues"
+  },
+  "homepage": "https://github.com/reistorm/JS_start/tree/main#readme"
+}
