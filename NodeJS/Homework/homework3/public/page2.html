@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .counter {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>About</h1>
+<a href="./page1.html">Главная страница</a>
+<a href="#">About</a>
+
+<div class="counter">
+    Количество просмотров: <span id="viewCount">0</span>
+</div>
+
+<script>
+    // Функция для получения текущего количества просмотров
+    function updateViewCount() {
+        fetch('/increment-view/page2')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('viewCount').textContent = data.viewCount;
+            })
+            .catch(error => console.error('Ошибка:', error));
+    }
+
+    // Обновляем счетчик при загрузке страницы
+    window.onload = updateViewCount;
+</script>
+<script src="server.js"></script>
+
+</body>
+</html>
