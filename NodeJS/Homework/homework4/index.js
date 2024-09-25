@@ -10,8 +10,6 @@ const usersFilePath = path.join(__dirname, 'users.json');
 app.use(express.json());
 
 let users = [];
-let uniqueID = 0;
-
 
 const saveUsersToFile = () => {
     const data = JSON.stringify(users, null, 2);
@@ -20,13 +18,11 @@ const saveUsersToFile = () => {
 
 const loadUsersFromFile = () => {
     if(fs.existsSync(usersFilePath)){
-        const rawData = fs.readFileSync(usersFilePath);
-        return JSON.parse(rawData);
-    } else {
-        users = [];
+        const rawData = fs.readFileSync(usersFilePath, 'utf8');
+        users = JSON.parse(rawData);
     }
 }
-
+// заполним массив данными с файла users.json
 loadUsersFromFile();
 
 const userSchema = joi.object({
@@ -36,10 +32,9 @@ const userSchema = joi.object({
     city: joi.string().min(1)
 });
 
-app.get('/users', (req, res) => {
-    loadUsersFromFile();
-    res.json(users);
-})
+const validateUser = (user) => {
+    return userSchema.validate(user);
+};
 
 app.get('/users/:id', (req, res) => {
     const user = users.find(user => user.id === Number(req.params.id));
@@ -50,40 +45,61 @@ app.get('/users/:id', (req, res) => {
     }
 })
 
-app.post('/users', (req, res) => {
-    uniqueID += 1;
-    const newUser = { 
-        id: uniqueID, 
-        ...req.body
-    };
-    users.push(newUser);
-    saveUsersToFile();
-    res.status(201).json(newUser);
-    //res.send({ id: uniqueID})
-})
+
 
 app.put('/users/:id', (req, res) => {
     const userIndex = users.findIndex(user => user.id === Number(req.params.id));
+    const {error} = validateUser(req.body);
+    if (error) {
+        return res.status(400).json({ error: error.details[0].message });
+    }
+    
     if(userIndex !== -1){
         users[userIndex] = { ...users[userIndex], ...req.body};
-        saveUsersToFile();
+        saveUsersToFile(users[userIndex]);
         res.json(users[userIndex]);
     } else {
         res.status(404).json({message: 'User not found'});
     }
 })
 
-app.delete('/users/:id', (res, req) => {
-    const user = users.find(user => user.id === Number(req.params.id));    
-    if(user){
-        const userIndex = users.indexOf(user);
-        users.splice(userIndex, 1);
-        saveUsersToFile();
-        res.status(204).send();
-    } else {
-        res.status(404);
-        res.json({message: 'User not found'});
+app.delete('/users/:id', (req, res) => {
+    console.log('req.params:', req.params);
+    const userIndex = users.findIndex(user => user.id === Number(req.params.id));
+
+    if (userIndex === -1) {
+        return res.status(404).json({ error: 'Пользователь не найден' });
     }
+
+    users.splice(userIndex, 1);
+
+    fs.writeFile(usersFilePath, JSON.stringify(users, null, 2), (err) => {
+        if (err) {
+            return res.status(500).json({ error: 'Ошибка записи файла' });
+        }
+        res.status(204).send(); 
+    });
+})
+
+app.post('/users', (req, res) => {
+    const newUser = req.body;
+    newUser.id = users.map(user => user.id).filter(id => id !== null && id !== undefined);
+    if(newUser.id.length) {
+        newUser.id = Math.max(...newUser.id) + 1;
+    } else {
+        newUser.id = 1;
+    }
+    users.push(newUser);
+    fs.writeFile(usersFilePath, JSON.stringify(users, null, 2), (err) => {
+        if(err) {
+            return res.status(500).json({error: 'Ошибка записи файла'});
+        }
+        res.status(201).json(newUser);
+    })
+})
+
+app.get('/users', (req, res) => {
+    res.json(users);
 })
 
 app.listen(3000, () => {
