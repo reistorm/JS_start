@@ -1,0 +1,43 @@
+.add-comment{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+.title {
+    width: 235px;
+}
+.text {
+    width: 300px;
+    height: 100px;
+}
+.comments-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;margin-top: 10px;
+}
+.product-names{
+    border: 1px solid black;
+    border-radius: 5px;
+    min-width: 300px;
+    min-height: 30px;
+}
+.comments{
+    display: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    min-width: 800px;
+    min-height: 30px;
+}
+.comment {
+    display: flex;
+    gap: 10px;
+}
+.remove-btn {
+    color: blue;
+}
+.pointer:hover {
+    cursor: pointer;
+}
