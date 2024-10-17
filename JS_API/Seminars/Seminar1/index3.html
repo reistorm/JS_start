@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"></head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Список статей</h1>
+        <ul class="list-group" id="articlesList">
+            <!-- Здесь будут отображаться статьи -->
+        </ul>
+        <button class="btn btn-primary mt-3" id="addArticleButton">Добавить статью
+        </button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+    <script>
+
+        // Задание 3 (тайминг 50 минут) 
+        // 1. 2. 3. 4. 5. 6. 7. Вы создаете веб-страницу для отображения списка статей.
+        // Каждая статья состоит из заголовка и текста. Вам необходимо использовать
+        // Bootstrap для стилизации элементов. Используйте Bootstrap, чтобы стилизовать
+        // элементы: a. Заголовок статьи (<h2>) b. c. Текст статьи (<p>) Кнопки
+        // "Добавить статью", "Удалить" и "Редактировать". Создайте начальный список
+        // статей, который будет загружаться при загрузке страницы. Используйте
+        // JSON-данные для определения заголовков и текстов статей. Позвольте
+        // пользователю добавлять новые статьи. При нажатии на кнопку "Добавить статью"
+        // должна появиться новая статья с заголовком "Новая статья" и текстом
+        // "Введите содержание статьи...". Реализуйте функциональность удаления статей.
+        // При нажатии на кнопку "Удалить" соответствующая статья должна быть удалена
+        // из списка. Реализуйте функциональность редактирования статей. При нажатии
+        // на кнопку "Редактировать" пользователь должен иметь возможность изменить
+        // заголовок и текст статьи. Используйте всплывающее окно или prompt для ввода
+        // новых данных. Все изменения (добавление, удаление, редактирование) должны
+        // быть сохранены в локальное хранилище браузера, чтобы они сохранялись
+        // после перезагрузки страницы.
+
+        // JSON-данные со списком статей
+        const articlesData = [
+            {
+                title: 'Заголовок статьи 1',
+                content: 'Содержание статьи 1'
+            },
+            {
+                title: 'Заголовок статьи 2',
+                content: 'Содержание статьи 2'
+            }
+        ];
+        // Добавление статей
+        articlesData.forEach(element => {
+            const articleItem = createArticle(element.title, element.content);
+            articleList.append(articleItem);
+        });
+
+        function createArticle(title, content) {
+            const articleItem = document.createElement('li');
+            articleItem.classList.add('list-group-item');
+
+            const articleTitle = document.createElement('h2');
+            articleTitle.classList.add('mb-3');
+            articleTitle.textContent = title;
+
+            const articleContent = document.createElement('p');
+            articleContent.textContent = content;
+
+            const editButton = document.createElement('button');
+            editButton.textContent = 'Редактировать';
+            editButton.classList.add('btn', 'btn-warning');
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Удалить';
+            deleteButton.classList.add('btn', 'btn-danger');
+
+            // Добавляем 
+            articleItem.append(articleTitle);
+            articleItem.append(articleContent);
+            articleItem.append(editButton);
+            articleItem.append(deleteButton);
+
+            return articleItem;
+        }
+        // Добавление новых статей
+        addArticleButton.addEventListener('click', function (e) {
+            const newArticle = {
+                title: 'Новая статья',
+                content: 'Введите новый текст статьи'
+            }
+            // Создается новая статья
+            const articleItem = createArticle(newArticle.title, newArticle.content);
+            // Добавляем в articleList articleItem, который создали
+            articleList.append(articleItem);
+
+        });
+
+        // Удаление и редактирование статьи 
+        articleList.addEventListener('click', function (e) {
+            // e.target - элемент, на который кликали
+            if(e.target.textContent == 'Удалить'){
+                const articleItem = e.target.closest('li');
+                articleItem.remove();
+            }
+            if(e.target.textContent == 'Редактировать'){
+                const articleItem = e.target.closest('li');
+                const articleTitle = articleItem.querySelector('h2');
+                const articleContent = articleItem.querySelector('p');
+
+                const newTitle = prompt('Введите новый заголовок', articleTitle.textContent);
+                const newContent = prompt('Введите новое содержимое', articleContent.textContent);
+                    
+                if(newTitle !== null && newContent !== null) {
+                    articleTitle.textContent = newTitle;
+                    articleContent.textContent = newContent;
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
