@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="buyButton">Купить</button>
+
+    <script>
+        buyButton.addEventListener('click', function (e) {
+            if(e.isTrusted) {
+                // originalText = 'Купить'
+                const originalText = buyButton.textContent;
+                buyButton.textContent = 'Товар добавлен в корзину'
+                setTimeout(() => {
+                    buyButton.textContent = originalText;
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
