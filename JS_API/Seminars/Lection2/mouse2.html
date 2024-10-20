@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="context-menu">
+        <ul>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+        </ul>
+    </div>
+
+    <script>
+        const contextMenu = document.getElementById('context-menu');
+
+
+        // при клике блок показать
+        document.addEventListener('click', function (event){
+            if(event.target !== contextMenu) {
+                contextMenu.style.display = 'none';
+            }
+        });
+
+        // поймать блок и скрыть
+        document.addEventListener('keydown', function (event) {
+            if(event.code === 'Space') {
+                contextMenu.style.display = 'block';
+            }
+        });
+        
+        // блок появится, если нажать на пробел
+    </script>
+</body>
+</html>

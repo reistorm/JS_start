@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <style>
+        /* Стили для прелоадера */
+        .loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .loader .fa-spinner {
+            font-size: 48px;
+            color: #333;
+            animation: spin 1s linear infinite;
+        }
+        /* Анимация вращения */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        /* Скрыть контент при отображения прелоадера */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="loaded">
+        <i class="fas fa-spinner"></i>
+    </div>
+
+    <div class="content hidden">
+        <h1>Заголовок</h1>
+        <p>Содержание страницы</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/1-month-old_kittens_32.jpg/1280px-1-month-old_kittens_32.jpg" alt="cat">
+    </div>
+    <script>
+        window.addEventListener('load', function (e) {
+            const contentEl = document.querySelector('.content');
+            contentEl.classList.remove('hidden');
+            // будет загружаться не сразу, только после текста
+            const loaderEl = document.querySelector('.loader');
+            loaderEl.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
