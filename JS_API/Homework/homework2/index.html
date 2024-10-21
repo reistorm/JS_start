@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            position: relative;
+            max-width: 600px;
+            max-height: 700px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .slide {
+            min-width: 100%;
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        .back_btn,
+        .forward_btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(224, 98, 29, 0.5); /* Полупрозрачный фон */
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1;
+        }
+        .back_btn {
+            left: 10px; /* Сдвинуть кнопку влево */
+        }
+
+        .forward_btn {
+            right: 10px; /* Сдвинуть кнопку вправо */
+        }
+
+        .back_btn:hover,
+        .forward_btn:hover {
+            background-color: rgba(228, 143, 16, 0.8); /* Изменить фон при наведении */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slides">
+            <img class="slide active" src="https://i.pinimg.com/control/564x/63/33/57/633357c1ae1f2413b19d7ed009ec1b54.jpg" alt="">
+            <img class="slide" src="https://i.pinimg.com/control/564x/f6/e4/a6/f6e4a62f3f6df36398d59d18b5a49144.jpg" alt="">
+            <img class="slide" src="https://i.pinimg.com/control/564x/88/5f/ae/885fae57f69e904d76604ab8d0499f6b.jpg" alt="">        
+        </div>
+        <button class="back_btn" onclick="changeSlider(-1)">&#10094;</button>
+        <button class="forward_btn" onclick="changeSlider(1)">&#10095;</button>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function changeSlider (direction) {
+            slides[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + direction + slides.length) % slides.length;
+            slides[currentIndex].classList.add('active');
+        }
+        slides[currentIndex].classList.add('active');
+    </script>
+</body>
+</html>
