@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="superForm">
+        <select name="selectFrom" multiple>
+            <option value="Geekbrains" selected>Geekbrains</option>
+            <option value="Skillbox" selected>Skillbox</option>
+            <option value="Skillfactory">Skillfactory</option>
+        </select>
+    </form>
+
+    <script>
+        // 1 вариант вывода выбранных
+        const select = document.forms.superForm.selectForm;
+        // Следующие три строки делают одно и то же
+        select.options[2].selected = true;
+        select.selectedIndex = 2;
+        select.value = 'Skillfactory';
+
+        // 2 вариант вывода выбранных
+        const selected = Array.from(select.options)
+            // отфильтровать выбранные опции(selected)
+            .filter(option => option.selected)
+            // добавить их в массив и вывести 
+            .map(option => option.value);
+        console.log(selected);
+    </script>
+</body>
+</html>

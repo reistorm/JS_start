@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="superForm">
+        <p>
+            email: <input type="email" name="email">
+        </p>
+        <div>
+            selectForm: <select name="selectForm">
+                <option value="Geekbrains">Geekbrains</option>
+                <option value="Skillbox">Skillbox</option>
+                <option value="Skillfactory">Skillfactory</option>
+            </select>
+        </div>
+        <p>
+            checkbox: <input type="checkbox" name="checkbox">
+        </p>
+    </form>
+
+    <script>
+        // поймали форму
+        const form = document.forms.superForm;
+
+        // в консоли отобразит изменения
+        form.email.onchange = () => {
+            console.log('change - email: ', form.email.value);
+        }
+        // в консоли отобразит ввод текста
+        form.email.oninput = () => {
+            console.log('input - email: ', form.email.value);
+        }
+
+        // в консоли отобразит выбор
+        form.selectForm.onchange = () => {
+            console.log('change - selectForm: ', form.selectForm.value);
+        }
+
+        // в консоли отобразит переход
+        form.selectForm.oninput = () => {
+            console.log('input - selectForm: ', form.selectForm.value);
+        }
+
+        // в консоли выведет true/false выбран или нет
+        form.checkbox.onchange = () => {
+            console.log('change - checkbox: ', form.checkbox.value);
+        }
+
+        // в консоли выведет true/false выбран или нет
+        form.checkbox.oninput = () => {
+            console.log('input - checkbox: ', form.checkbox.value);
+        }
+
+        // выводит то, что вырезают cut
+        form.email.oncut = form.email.oncopy = form.email.onpaste = (event) => {
+            console.log(event.type + ' - ' + event.clipboardData.getData('text/plain'));
+        }
+    </script>
+</body>
+</html>
